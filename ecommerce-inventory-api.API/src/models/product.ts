@@ -6,8 +6,8 @@ interface IProduct extends Document {
     description: string;
     price: number;
     stockQuantity: number;
-    categoryId: mongoose.Types.ObjectId;
-    supplierId: mongoose.Types.ObjectId;
+    categoryId: String;
+    supplierId: String;
     createdDate: Date;
     updatedDate: Date;
 }
@@ -17,8 +17,8 @@ const ProductSchema = new Schema<IProduct>({
     description: { type: String, required: true },
     price: { type: Number, required: true },
     stockQuantity: { type: Number, required: true },
-    categoryId: { type: mongoose.Schema.Types.ObjectId, ref: 'Category', required: true },
-    supplierId: { type: mongoose.Schema.Types.ObjectId, ref: 'Supplier', required: true },
+    categoryId: { type: String, required: true },
+    supplierId: { type: String, required: true },
     createdDate: { type: Date, default: Date.now },
     updatedDate: { type: Date, default: Date.now },
 });
