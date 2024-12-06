@@ -7,9 +7,7 @@ import "./config/logging";
 import { DEVELOPMENT, mongo, server } from "./config/db";
 import inventory from "./routes/inventory";
 import shipmentRoutes from "./routes/shipmentRoutes";
-import supplierRoutes from "./routes/supplierRoutes";
 import transactionRoutes from "./routes/transactionRoutes";
-import productRoutes from "./routes/productRoutes";
 import authRoutes from "./routes/authRoutes";
 
 import "reflect-metadata";
@@ -70,9 +68,7 @@ export const Main = async () => {
   logging.log("Define Controller Routing");
   logging.log("----------------------------------------");
   application.use(inventory);
-  application.use(supplierRoutes);
   application.use(transactionRoutes);
-  application.use(productRoutes);
   application.use(shipmentRoutes);
   application.use(authRoutes);
 
