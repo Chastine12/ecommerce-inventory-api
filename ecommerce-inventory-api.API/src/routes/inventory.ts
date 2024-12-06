@@ -17,52 +17,52 @@ const inventoryController = new InventoryController();
  * @swagger
  * components:
  *   schemas:
- *     ProductItem:
+ *     InventoryItem:
  *       type: object
  *       required:
- *         - productName
+ *         - itemName
  *         - description
  *         - price
  *         - stockQuantity
  *       properties:
- *         productName:
+ *         itemName:
  *           type: string
- *           description: Name of the product
+ *           description: Name of the inventory item
  *         description:
  *           type: string
- *           description: Detailed description of the product
+ *           description: Detailed description of the inventory item
  *         price:
  *           type: number
- *           description: Price of the product
+ *           description: Price of the inventory item
  *         stockQuantity:
  *           type: integer
- *           description: Available stock for the product
- *     ProductResponse:
+ *           description: Available stock for the inventory item
+ *     InventoryResponse:
  *       type: object
  *       properties:
  *         id:
  *           type: string
- *           description: Unique identifier of the product
- *         productName:
+ *           description: Unique identifier of the inventory item
+ *         itemName:
  *           type: string
- *           description: Name of the product
+ *           description: Name of the inventory item
  *         description:
  *           type: string
- *           description: Detailed description of the product
+ *           description: Detailed description of the inventory item
  *         price:
  *           type: number
- *           description: Price of the product
+ *           description: Price of the inventory item
  *         stockQuantity:
  *           type: integer
- *           description: Available stock for the product
+ *           description: Available stock for the inventory item
  *         createdAt:
  *           type: string
  *           format: date-time
- *           description: Timestamp when the product was created
+ *           description: Timestamp when the item was created
  *         updatedAt:
  *           type: string
  *           format: date-time
- *           description: Timestamp when the product was last updated
+ *           description: Timestamp when the item was last updated
  *     ValidationError:
  *       type: object
  *       properties:
@@ -85,7 +85,7 @@ const inventoryController = new InventoryController();
  *       properties:
  *         total:
  *           type: integer
- *           description: Total number of products
+ *           description: Total number of items
  *         pages:
  *           type: integer
  *           description: Total number of pages for pagination
@@ -103,23 +103,23 @@ const inventoryController = new InventoryController();
 
 /**
  * @swagger
- * /api/product:
+ * /api/inventory:
  *   post:
- *     summary: Add a new product
- *     tags: [Product]
+ *     summary: Add a new inventory item
+ *     tags: [Inventory]
  *     requestBody:
  *       required: true
  *       content:
  *         application/json:
  *           schema:
- *             $ref: '#/components/schemas/ProductItem'
+ *             $ref: '#/components/schemas/InventoryItem'
  *     responses:
  *       201:
- *         description: Product created successfully
+ *         description: Inventory item created successfully
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/ProductResponse'
+ *               $ref: '#/components/schemas/InventoryResponse'
  *       400:
  *         description: Validation error
  *         content:
@@ -128,8 +128,8 @@ const inventoryController = new InventoryController();
  *               $ref: '#/components/schemas/ValidationError'
  *
  *   get:
- *     summary: Get all products
- *     tags: [Product]
+ *     summary: Get all inventory items
+ *     tags: [Inventory]
  *     security:
  *       - bearerAuth: []
  *     parameters:
@@ -149,7 +149,7 @@ const inventoryController = new InventoryController();
  *         description: Number of items per page
  *     responses:
  *       200:
- *         description: List of products
+ *         description: List of inventory items
  *         content:
  *           application/json:
  *             schema:
@@ -158,14 +158,14 @@ const inventoryController = new InventoryController();
  *                 data:
  *                   type: array
  *                   items:
- *                     $ref: '#/components/schemas/ProductResponse'
+ *                     $ref: '#/components/schemas/InventoryResponse'
  *                 pagination:
  *                   $ref: '#/components/schemas/Pagination'
  *
- * /api/product/{id}:
+ * /api/inventory/{id}:
  *   get:
- *     summary: Get product by ID
- *     tags: [Product]
+ *     summary: Get inventory item by ID
+ *     tags: [Inventory]
  *     security:
  *       - bearerAuth: []
  *     parameters:
@@ -174,20 +174,20 @@ const inventoryController = new InventoryController();
  *         required: true
  *         schema:
  *           type: string
- *         description: Product ID
+ *         description: Inventory item ID
  *     responses:
  *       200:
- *         description: Product details
+ *         description: Inventory item details
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/ProductResponse'
+ *               $ref: '#/components/schemas/InventoryResponse'
  *       404:
- *         description: Product not found
+ *         description: Inventory item not found
  *
  *   put:
- *     summary: Update product details
- *     tags: [Product]
+ *     summary: Update inventory item details
+ *     tags: [Inventory]
  *     security:
  *       - bearerAuth: []
  *     parameters:
@@ -196,26 +196,26 @@ const inventoryController = new InventoryController();
  *         required: true
  *         schema:
  *           type: string
- *         description: Product ID
+ *         description: Inventory item ID
  *     requestBody:
  *       required: true
  *       content:
  *         application/json:
  *           schema:
- *             $ref: '#/components/schemas/ProductItem'
+ *             $ref: '#/components/schemas/InventoryItem'
  *     responses:
  *       200:
- *         description: Product updated successfully
+ *         description: Inventory item updated successfully
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/ProductResponse'
+ *               $ref: '#/components/schemas/InventoryResponse'
  *       404:
- *         description: Product not found
+ *         description: Inventory item not found
  *
  *   delete:
- *     summary: Delete product
- *     tags: [Product]
+ *     summary: Delete inventory item
+ *     tags: [Inventory]
  *     security:
  *       - bearerAuth: []
  *     parameters:
@@ -224,14 +224,13 @@ const inventoryController = new InventoryController();
  *         required: true
  *         schema:
  *           type: string
- *         description: Product ID
+ *         description: Inventory item ID
  *     responses:
  *       204:
- *         description: Product deleted successfully
+ *         description: Inventory item deleted successfully
  *       404:
- *         description: Product not found
+ *         description: Inventory item not found
  */
-
 
 // Define Routes
 router.post("/api/inventory", authMiddleware, inventoryController.createItem);
