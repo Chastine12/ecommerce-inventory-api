@@ -9,8 +9,8 @@ const inventoryController = new InventoryController();
 /**
  * @swagger
  * tags:
- *   name: Product
- *   description: Product management endpoints
+ *   name: Inventory
+ *   description: Inventory Management endpoints
  */
 
 /**
